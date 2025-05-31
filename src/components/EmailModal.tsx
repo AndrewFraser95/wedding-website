@@ -63,13 +63,13 @@ export default function EmailModal() {
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
-              <StyledButton color="bg-red-500" to="">
-          Get Wedding Updates
+        <StyledButton color="bg-red-500" to="">
+          Get Wedding Updates + Remind me to RSVP
         </StyledButton>
       </DialogTrigger>
       <DialogContent className="sm:max-w-md">
         <DialogHeader>
-          <DialogTitle>Sign up for updates</DialogTitle>
+          <DialogTitle>Sign up for updates + reminders</DialogTitle>
         </DialogHeader>
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">

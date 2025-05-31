@@ -64,7 +64,7 @@ export default function Rsvp() {
 
   return (
     <Layout>
-      <div className="min-h-screen bg-yellow-50 text-center p-6">
+      <div className="min-h-screen text-center p-6">
         <h1 className="text-3xl font-bold mb-6 text-center">RSVP</h1>
         <Form {...form}>
           <form

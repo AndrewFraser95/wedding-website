@@ -28,8 +28,11 @@ export default function Countdown() {
 
   return (
     <Layout>
-      <div className="min-h-screen bg-yellow-50 text-center p-6">
-        <h1 className="text-3xl font-bold mb-6 text-green-700">
+      <div className="min-h-screen text-center p-6">
+        <h1
+          className="text-3xl font-bold mb-6 text-green-700"
+          style={{ marginTop: "30vh" }}
+        >
           ⏳ Countdown to the Big Day
         </h1>
         <p className="text-2xl font-mono text-pink-600">{timeLeft}</p>

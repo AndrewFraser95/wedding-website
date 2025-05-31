@@ -1,6 +1,5 @@
 import Layout from "../components/Layout";
 import EmailModal from "../components/EmailModal";
-import StyledButton from "../components/StyledButton";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import StyledLinkButton from "../components/StyledLinkButton";
 
@@ -16,13 +15,13 @@ export default function Home() {
         </p>
         <div style={{ textAlign: "center" }}>
           <AspectRatio ratio={9 / 13}>
-            <img src="/assets/placeholder-selfie.jpg" />
+            <img src="/assets/proposal.jpg" />
           </AspectRatio>
         </div>
-        <div className="space-y-4" style={{paddingBottom: "2em"}}>
+        <div className="space-y-4" style={{ paddingBottom: "2em" }}>
           <EmailModal />
         </div>
-        <div className="space-y-4">
+        {/* <div className="space-y-4">
           <StyledLinkButton to="/venue">See Venue & Info</StyledLinkButton>
           <StyledLinkButton to="/rsvp" color="bg-yellow-500">
             RSVP Now
@@ -33,7 +32,7 @@ export default function Home() {
           <StyledLinkButton to="/gallery" color="bg-purple-500">
             Photo Gallery
           </StyledLinkButton>
-        </div>
+        </div>  */}
       </div>
     </Layout>
   );

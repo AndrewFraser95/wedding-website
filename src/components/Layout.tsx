@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import { type ReactNode } from "react";
 import NavBar from "./NavBar";
 
 export default function Layout({ children }: { children: ReactNode }) {
@@ -6,8 +6,10 @@ export default function Layout({ children }: { children: ReactNode }) {
     <div
       className="min-h-screen bg-cover bg-center flex flex-col"
       style={{
-        backgroundImage: `url('assets/kettlesing.avif')`,
-        textAlign: "center"
+        backgroundImage: `url('assets/proposal.jpg')`,
+        // backgroundPosition: "25% 50%",
+        backgroundPosition: "55%",
+        textAlign: "center",
       }}
     >
       <div className="bg-white/80 flex-1">
