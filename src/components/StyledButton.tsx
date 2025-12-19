@@ -1,4 +1,4 @@
-import { Button } from "@/components/ui/button";
+import { Button } from "../components/ui/button";
 import type { ButtonHTMLAttributes } from "react";
 
 interface StyledButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {

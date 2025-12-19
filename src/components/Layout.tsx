@@ -4,18 +4,15 @@ import NavBar from "./NavBar";
 export default function Layout({ children }: { children: ReactNode }) {
   return (
     <div
-      className="min-h-screen bg-cover bg-center flex flex-col"
+      className="min-h-screen flex flex-col bg-gradient-to-b from-[#fff8f0] via-[#fffbe9] to-[#f9e7e7] bg-cover bg-center"
       style={{
-        backgroundImage: `url('assets/proposal.jpg')`,
-        // backgroundPosition: "25% 50%",
-        backgroundPosition: "55%",
         textAlign: "center",
       }}
     >
-      <div className="bg-white/80 flex-1">
-        <NavBar />
-        <div className="max-w-2xl mx-auto px-4 py-8">{children}</div>
-      </div>
+      <NavBar />
+      <main className="flex-1 flex flex-col items-center w-full px-2 md:px-0">
+        {children}
+      </main>
     </div>
   );
 }
