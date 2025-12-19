@@ -2,6 +2,20 @@
 
 @custom-variant dark (&:is(.dark *));
 
+@keyframes fade-in-down {
+  0% {
+    opacity: 0;
+    transform: translateY(-16px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.animate-fade-in-down {
+  animation: fade-in-down 0.3s ease;
+}
+
 @layer base {
   :root {
     --background: 0 0% 100%;

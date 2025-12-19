@@ -5,9 +5,9 @@ import {
   DialogHeader,
   DialogTitle,
   DialogFooter,
-} from "@/components/ui/dialog";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
+} from "../components/ui/dialog";
+import { Button } from "../components/ui/button";
+import { Input } from "../components/ui/input";
 import {
   Form,
   FormControl,
@@ -15,30 +15,34 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "@/components/ui/form";
+} from "../components/ui/form";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useState } from "react";
 import StyledButton from "./StyledButton";
 
-const emailSchema = z.object({
-  email: z.string().email("Please enter a valid email address"),
+const addressSchema = z.object({
+  name: z.string().min(5, "Please enter a valid Name"),
+  add1: z.string().min(5, "Please enter a valid Address Line 1"),
+  add2: z.string().min(5, "Please enter a valid Address Line 2"),
+  county: z.string().min(5, "Please enter a valid county"),
+  postcode: z.string().min(5, "Please enter a valid postcode"),
 });
 
-type EmailForm = z.infer<typeof emailSchema>;
+type AddressForm = z.infer<typeof addressSchema>;
 
 export default function EmailModal() {
-  const form = useForm<EmailForm>({
-    resolver: zodResolver(emailSchema),
-    defaultValues: { email: "" },
+  const form = useForm<AddressForm>({
+    resolver: zodResolver(addressSchema),
+    defaultValues: { name: "", add1: "", add2: "", county: "", postcode: "" },
   });
 
   const [open, setOpen] = useState(false);
 
-  async function onSubmit(values: EmailForm) {
+  async function onSubmit(values: AddressForm) {
     try {
-      const response = await fetch("https://formspree.io/f/xqaqlven", {
+      const response = await fetch("https://formspree.io/f/mqabzglg", {
         method: "POST",
         headers: {
           Accept: "application/json",
@@ -48,7 +52,7 @@ export default function EmailModal() {
       });
 
       if (response.ok) {
-        alert("Thanks for signing up for updates!");
+        alert("Thanks for providing your address!");
         form.reset();
         setOpen(false);
       } else {
@@ -63,24 +67,76 @@ export default function EmailModal() {
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
-        <StyledButton color="bg-red-500" to="">
-          Get Wedding Updates + Remind me to RSVP
+        <StyledButton color="bg-red-500" style={{ height: "auto" }}>
+          Provide your address <br /> for the formal invite!
         </StyledButton>
       </DialogTrigger>
       <DialogContent className="sm:max-w-md">
         <DialogHeader>
-          <DialogTitle>Sign up for updates + reminders</DialogTitle>
+          <DialogTitle>Provide your address for the formal invite!</DialogTitle>
         </DialogHeader>
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
             <FormField
               control={form.control}
-              name="email"
+              name="name"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Email address</FormLabel>
+                  <FormLabel>Name(s)</FormLabel>
                   <FormControl>
-                    <Input placeholder="you@example.com" {...field} />
+                    <Input placeholder="Mr John Smith" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="add1"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Address Line 1:</FormLabel>
+                  <FormControl>
+                    <Input placeholder="64 West Wallaby Street" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="add2"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Address Line 2:</FormLabel>
+                  <FormControl>
+                    <Input placeholder="Sandford" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="county"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>County:</FormLabel>
+                  <FormControl>
+                    <Input placeholder="Yorkshire" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="postcode"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Postcode:</FormLabel>
+                  <FormControl>
+                    <Input placeholder="YRU 2SE" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
