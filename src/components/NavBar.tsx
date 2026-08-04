@@ -11,6 +11,7 @@ import { Menu, X } from "lucide-react";
 const NAV_LINKS = [
   { to: "/", label: "Home" },
   { to: "/rsvp", label: "RSVP" },
+  { to: "/friday-night", label: "Friday Night" },
   { to: "/submit", label: "Submit" },
   { to: "/our-story", label: "Our Story" },
   { to: "/event-details", label: "Event Details" },

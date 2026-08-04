@@ -10,12 +10,14 @@ import ThankYou from "./pages/ThankYou";
 import GiftRegistry from "./pages/GiftRegistry";
 import OrderOfTheDay from "./pages/OrderOfTheDay";
 import SubmitContribution from "./pages/SubmitContribution";
+import FridayNight from "./pages/FridayNight";
 
 export default function App() {
   return (
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/rsvp" element={<RSVP />} />
+      <Route path="/friday-night" element={<FridayNight />} />
       <Route path="/submit" element={<SubmitContribution />} />
       <Route path="/our-story" element={<OurStory />} />
       <Route path="/event-details" element={<EventDetails />} />
