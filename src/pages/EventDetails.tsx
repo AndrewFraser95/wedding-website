@@ -80,6 +80,12 @@ export default function EventDetails() {
               👗 <strong>Dress code:</strong> We’d love to see some colour!
             </p>
             <p className="mb-4">
+              👪 <strong>Plus ones & Little ones:</strong> Kindly note: Due to
+              venue capacity, we are unable to accommodate additional 'plus
+              ones' or children, unless otherwise communicated. We appreciate
+              your understanding.
+            </p>
+            <p className="mb-4">
               🚕 <strong>Carriages:</strong> 00:30am
             </p>
           </div>
