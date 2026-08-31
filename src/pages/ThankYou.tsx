@@ -1,11 +1,14 @@
 import { Link } from "react-router-dom";
 import Layout from "../components/Layout";
 
-// PLACEHOLDER CONTENT — replace the paragraphs below with your own words
+// PLACEHOLDER CONTENT - replace the paragraphs below with your own words
 // whenever you're ready, Andrew & Charley. Nothing else needs to change.
 const MESSAGE_PARAGRAPHS = [
-  "[Andrew & Charley's message goes here.]",
-  "[Say a few words to your guests — thank them for being part of your day, share how much it meant to have them there, whatever feels right.]",
+  "From Andy and Charley. We want to express how grateful we feel for your presence on our special day. Your support and love mean the world to us, and we are so thankful to have shared this festival with you.",
+  "I don't think we'll ever properly be able to thank everyone for bringing the love and energy that they did, and making it so magical",
+  "We hope you had as much fun as we did, and that you you eat, drank and were thoroughily bloody merry",
+  "Please do share any photos or videos you took with us, and tag us on social media so we can relive the memories together.",
+  "We love you all, and we can't wait to see you again soon. Until then, take care and keep the festival spirit alive in your hearts.",
 ];
 
 export default function ThankYou() {

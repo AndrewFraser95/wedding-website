@@ -19,7 +19,7 @@ const items = [
     status: "lost",
     itemName: "Mini keychain camera (1 of 3)",
     description:
-      "One of our tiny keychain cameras has gone missing from the wedding — if you spot it lying around, we'd love it back!",
+      "One of our tiny keychain cameras has gone missing from the wedding - if you spot it lying around, we'd love it back!",
     reporterName: "Andrew & Charley",
     contact: "",
     createdAt: Date.now(),
@@ -28,7 +28,7 @@ const items = [
     status: "lost",
     itemName: "Mini keychain camera (2 of 3)",
     description:
-      "Another one of our little keychain cameras is missing — keep an eye out!",
+      "Another one of our little keychain cameras is missing - keep an eye out!",
     reporterName: "Andrew & Charley",
     contact: "",
     createdAt: Date.now() + 1,
@@ -37,7 +37,7 @@ const items = [
     status: "lost",
     itemName: "Mini keychain camera (3 of 3)",
     description:
-      "The third of our missing keychain cameras — if it turns up, please let us know.",
+      "The third of our missing keychain cameras - if it turns up, please let us know.",
     reporterName: "Andrew & Charley",
     contact: "",
     createdAt: Date.now() + 2,

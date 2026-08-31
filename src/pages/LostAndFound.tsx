@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
@@ -52,6 +52,7 @@ export default function LostAndFound() {
   const [showForm, setShowForm] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showModal, setShowModal] = useState(false);
+  const formRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     const itemsQuery = query(
@@ -84,6 +85,21 @@ export default function LostAndFound() {
       contact: "",
     },
   });
+
+  const handleFoundThis = (item: LostAndFoundItem) => {
+    form.reset({
+      status: "found",
+      itemName: item.itemName,
+      description: `Found this — originally reported lost by ${item.reporterName}.`,
+      reporterName: "",
+      contact: "",
+    });
+    setShowForm(true);
+    // Let the form render before scrolling to it
+    setTimeout(() => {
+      formRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+    }, 0);
+  };
 
   const onSubmit = async (values: FormValues) => {
     setIsSubmitting(true);
@@ -155,46 +171,71 @@ export default function LostAndFound() {
 
           {!loading && items.length > 0 && (
             <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-10">
-              {items.map((item) => (
-                <div
-                  key={item.id}
-                  className="bg-white rounded-xl shadow-md border border-[#e9c46a]/20 p-4 flex flex-col text-left"
-                >
-                  <div className="flex items-center justify-between mb-2">
-                    <span
-                      className={`inline-block px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide ${
-                        item.status === "lost"
-                          ? "bg-[#f9e7e7] text-[#c05c5c]"
-                          : "bg-[#e6f4ea] text-[#3f8b52]"
-                      }`}
-                    >
-                      {item.status === "lost" ? "Lost" : "Found"}
-                    </span>
-                  </div>
-                  {item.photoUrl && (
-                    <img
-                      src={item.photoUrl}
-                      alt={item.itemName}
-                      className="w-full h-40 object-cover rounded-lg mb-3 border border-[#e9c46a]/20"
-                    />
-                  )}
-                  <h3
-                    className="text-lg font-bold text-[#b5835d] mb-1"
-                    style={{ fontFamily: "Playwrite AU QLD, cursive" }}
+              {items.map((item) => {
+                const isLost = item.status === "lost";
+                return (
+                  <div
+                    key={item.id}
+                    role={isLost ? "button" : undefined}
+                    tabIndex={isLost ? 0 : undefined}
+                    onClick={isLost ? () => handleFoundThis(item) : undefined}
+                    onKeyDown={
+                      isLost
+                        ? (e) => {
+                            if (e.key === "Enter" || e.key === " ") {
+                              e.preventDefault();
+                              handleFoundThis(item);
+                            }
+                          }
+                        : undefined
+                    }
+                    className={`bg-white rounded-xl shadow-md border border-[#e9c46a]/20 p-4 flex flex-col text-left ${
+                      isLost
+                        ? "cursor-pointer hover:shadow-lg hover:border-[#e9c46a]/60 transition"
+                        : ""
+                    }`}
                   >
-                    {item.itemName}
-                  </h3>
-                  {item.description && (
-                    <p className="text-[#7c4f2c] text-sm mb-2">
-                      {item.description}
+                    <div className="flex items-center justify-between mb-2">
+                      <span
+                        className={`inline-block px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide ${
+                          isLost
+                            ? "bg-[#f9e7e7] text-[#c05c5c]"
+                            : "bg-[#e6f4ea] text-[#3f8b52]"
+                        }`}
+                      >
+                        {isLost ? "Lost" : "Found"}
+                      </span>
+                    </div>
+                    {item.photoUrl && (
+                      <img
+                        src={item.photoUrl}
+                        alt={item.itemName}
+                        className="w-full h-40 object-cover rounded-lg mb-3 border border-[#e9c46a]/20"
+                      />
+                    )}
+                    <h3
+                      className="text-lg font-bold text-[#b5835d] mb-1"
+                      style={{ fontFamily: "Playwrite AU QLD, cursive" }}
+                    >
+                      {item.itemName}
+                    </h3>
+                    {item.description && (
+                      <p className="text-[#7c4f2c] text-sm mb-2">
+                        {item.description}
+                      </p>
+                    )}
+                    <p className="text-[#7c4f2c] text-sm mt-auto">
+                      Reported by {item.reporterName}
+                      {item.contact ? ` · ${item.contact}` : ""}
                     </p>
-                  )}
-                  <p className="text-[#7c4f2c] text-sm mt-auto">
-                    Reported by {item.reporterName}
-                    {item.contact ? ` · ${item.contact}` : ""}
-                  </p>
-                </div>
-              ))}
+                    {isLost && (
+                      <p className="text-[#e9c46a] text-xs font-semibold mt-2">
+                        Found this? Tap to report it →
+                      </p>
+                    )}
+                  </div>
+                );
+              })}
             </div>
           )}
 
@@ -214,7 +255,10 @@ export default function LostAndFound() {
           </div>
 
           {showForm && (
-            <div className="bg-[#e9c46a]/10 rounded-2xl p-6 border border-[#e9c46a]/30 animate-fade-in-down">
+            <div
+              ref={formRef}
+              className="bg-[#e9c46a]/10 rounded-2xl p-6 border border-[#e9c46a]/30 animate-fade-in-down"
+            >
               <Form {...form}>
                 <form
                   onSubmit={form.handleSubmit(onSubmit)}

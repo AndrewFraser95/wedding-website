@@ -10,14 +10,15 @@ import { Menu, X } from "lucide-react";
 
 // The following are intentionally left off the top nav (their pages/routes
 // still exist at their URLs, just not linked): RSVP, Friday Night, Event
-// Details, Order of the Day, Travel and Stay, Countdown.
+// Details, Order of the Day, Travel and Stay, Countdown, Submit (legacy).
 const NAV_LINKS = [
   { to: "/", label: "Home" },
-  { to: "/submit", label: "Submit" },
   { to: "/our-story", label: "Our Story" },
   { to: "/gallery", label: "Gallery" },
   { to: "/gift-registry", label: "Gift Registry" },
   { to: "/lost-and-found", label: "Lost & Found" },
+  { to: "/soundtrack", label: "Soundtrack" },
+  { to: "/vendors", label: "Vendors" },
   { to: "/thank-you", label: "Thank You" },
 ];
 

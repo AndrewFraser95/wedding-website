@@ -55,7 +55,7 @@ export default function OurStory() {
           >
             <p className="mb-5">
               Once upon a time, in an age of swipes and Super Likes, Andrew and
-              Charley met—like all modern fairytales—on Tinder.
+              Charley met-like all modern fairytales-on Tinder.
             </p>
             <p className="mb-5">
               As fate would have it, both were gazing out of train windows,

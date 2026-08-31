@@ -404,8 +404,8 @@ export default function FridayNight() {
                         <span className="font-semibold text-[#b5835d]">
                           {person.name}
                         </span>{" "}
-                        — arriving {person.arrivalTime}
-                        {person.order ? ` — ordering: ${person.order}` : ""}
+                        - arriving {person.arrivalTime}
+                        {person.order ? ` - ordering: ${person.order}` : ""}
                       </li>
                     ))}
                   </ul>

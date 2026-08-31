@@ -12,6 +12,8 @@ import OrderOfTheDay from "./pages/OrderOfTheDay";
 import SubmitContribution from "./pages/SubmitContribution";
 import FridayNight from "./pages/FridayNight";
 import LostAndFound from "./pages/LostAndFound";
+import Soundtrack from "./pages/Soundtrack";
+import Vendors from "./pages/Vendors";
 
 export default function App() {
   return (
@@ -24,6 +26,8 @@ export default function App() {
       <Route path="/event-details" element={<EventDetails />} />
       <Route path="/order-of-the-day" element={<OrderOfTheDay />} />
       <Route path="/lost-and-found" element={<LostAndFound />} />
+      <Route path="/soundtrack" element={<Soundtrack />} />
+      <Route path="/vendors" element={<Vendors />} />
       <Route path="/travel-stay" element={<TravelAndStay />} />
       <Route path="/countdown" element={<Countdown />} />
       <Route path="/gallery" element={<Gallery />} />
