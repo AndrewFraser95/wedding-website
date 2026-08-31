@@ -80,7 +80,7 @@ export default function Home() {
           />
         </div>
         {/* Call to action */}
-        <Link
+        {/* <Link
           to="/rsvp"
           className="inline-block px-8 py-3 rounded-full bg-[#e9c46a] text-[#fff8f0] font-semibold text-lg shadow-md hover:bg-[#b5835d] transition"
           style={{
@@ -89,7 +89,7 @@ export default function Home() {
           }}
         >
           RSVP Now
-        </Link>
+        </Link> */}
       </div>
     </Layout>
   );

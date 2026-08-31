@@ -26,7 +26,7 @@ const VENDORS: Vendor[] = [
     website: "https://www.penelopejayne.co.uk ",
     phone: "07548829029",
     testimonial:
-      "Genuielly lost for words. Penny is a magician, and her team were faultless. From putting Charley and I at ease on the pre-wedding meeting, to immediately tackling tasks on the day, to a 3:08am email with a detailed breakdown having cleaned the entire space and packaged everything up beautifully. She's golddust and we felt so lucky to have her on our team. We can't recommend her enough.",
+      "Genuinely lost for words. Penny is a magician, and her team were faultless. From putting Charley and I at ease on the pre-wedding meeting, to immediately tackling tasks on the day, to a 3:08am email with a detailed breakdown having cleaned the entire space and packaged everything up beautifully. She's golddust and we felt so lucky to have her on our team. We can't recommend her enough. \n She is also a celebrant and we can only imagine how amazing she would have been at that too.",
   },
   {
     category: "Food",
@@ -47,7 +47,7 @@ const VENDORS: Vendor[] = [
     phone: "07469 496468",
     email: "tin.squid.photography@outlook.com",
     testimonial:
-      "Alex was just incredible. He immediately put both Charley and I at ease, and the photos he took are just stunning. We can't recommend him enough.",
+      "Alex was just incredible. He immediately put both Charley and I at ease, and the photos he took are just stunning. He gave us direction whilst also feeling like he could just be your friend.",
   },
   {
     category: "Band",
@@ -55,7 +55,7 @@ const VENDORS: Vendor[] = [
     website: "https://www.skylightband.co.uk/",
     email: "bookings@functioncentral.co.uk",
     testimonial:
-      "I think the music speaks for itself. Lovely chaps and incredible musicians and the night was made by them. We can't recommend them enough.",
+      "I think the music speaks for itself. Lovely chaps and incredible musicians and the night was made by them. We couldn't imagine any other band and they'll always be the soundtrack to our wedding day.",
   },
   {
     category: "Bar",
@@ -71,7 +71,7 @@ const VENDORS: Vendor[] = [
     website: "https://www.pictureblast.co.uk/",
     email: "info@pictureblastevents.co.uk",
     testimonial:
-      "All night, customisable custom frames and unlimited prints. Can't go wrong.",
+      "All night booth with unlimited prints. And also made the custom frames containing Charley's bunting and pipe-cleaner flowers, really going that extra mile. The perfect keepsake",
   },
   {
     category: "Marquee",
@@ -79,7 +79,7 @@ const VENDORS: Vendor[] = [
     website: "https://countryside.events/",
     email: "Hannah@countryside.events",
     testimonial:
-      "A beautiful marquee set up efficiently by the team and given the rain, an absolute lifesaver. We can't recommend them enough.",
+      "A beautiful marquee set up efficiently by the team and given the rain, an absolute lifesaver. If you need a marquee in the Yorkshire Dales, you know where to go.",
   },
   {
     category: "Glassware Hire",
