@@ -5,8 +5,9 @@ import Layout from "../components/Layout";
 // whenever you're ready, Andrew & Charley. Nothing else needs to change.
 const MESSAGE_PARAGRAPHS = [
   "From Andy and Charley. We want to express how grateful we feel for your presence on our special day. Your support and love mean the world to us, and we are so thankful to have shared this festival with you.",
-  "I don't think we'll ever properly be able to thank everyone for bringing the love and energy that they did, and making it so magical",
-  "We hope you had as much fun as we did, and that you you eat, drank and were thoroughily bloody merry",
+  "I don't think we'll ever properly be able to thank everyone for bringing the love and energy that they did, and making it so magical.",
+  "We hope you had as much fun as we did, and that you you ate, drank and were thoroughly bloody merry.",
+  "",
   "Please do share any photos or videos you took with us, and tag us on social media so we can relive the memories together.",
   "We love you all, and we can't wait to see you again soon. Until then, take care and keep the festival spirit alive in your hearts.",
 ];

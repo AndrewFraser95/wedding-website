@@ -17,60 +17,76 @@ const VENDORS: Vendor[] = [
     name: "Kettlesing Millennium Village Hall",
     phone: "07929 361212",
     email: "Christine@yorkshiredalesbb.onmicrosoft.com",
-    testimonial: "[Your thoughts on the venue go here.]",
+    testimonial:
+      "Christine and the team at Kettlesing Millennium Village Hall were amazing to work with. The hall is the perfect blank canvas and we feel so lucky to have been able to host our wedding there.",
+  },
+  {
+    category: "Coordinator",
+    name: "Penelope Boycott (goes by Penny)",
+    website: "https://www.penelopejayne.co.uk ",
+    phone: "07548829029",
+    testimonial:
+      "Genuielly lost for words. Penny is a magician, and her team were faultless. From putting Charley and I at ease on the pre-wedding meeting, to immediately tackling tasks on the day, to a 3:08am email with a detailed breakdown having cleaned the entire space and packaged everything up beautifully. She's golddust and we felt so lucky to have her on our team. We can't recommend her enough.",
   },
   {
     category: "Food",
     name: "Let's Go Street Food",
-    description:
-      "Wedding Breakfast: Longhorn Steak Co (choice of steak brioche sandwiches) · Evening Meal: St Monin's Fine Fisheries (choice of fish & chip meals)",
+    // description:
+    //   "Wedding Breakfast: Longhorn Steak Co (choice of steak brioche sandwiches) · Evening Meal: St Monin's Fine Fisheries (choice of fish & chip meals)",
     website: "https://www.letsgostreetfood.co.uk/",
     phone: "07929 361212",
     email: "chris@letsgostreetfood.co.uk",
-    testimonial: "[Your thoughts on the food go here.]",
+    testimonial:
+      "What a machine is all I can say. Incredible food, incredibly priced and the most lovely people to work with. We can't recommend them enough.",
   },
   {
     category: "Photographer",
     name: "Alex — Tin Squid Photography",
+    description: "https://www.instagram.com/tinsquidphotography/",
     website: "https://tinsquidphotography.com/",
     phone: "07469 496468",
     email: "tin.squid.photography@outlook.com",
-    testimonial: "[Your thoughts on the photography go here.]",
+    testimonial:
+      "Alex was just incredible. He immediately put both Charley and I at ease, and the photos he took are just stunning. We can't recommend him enough.",
   },
   {
     category: "Band",
     name: "Skylight",
     website: "https://www.skylightband.co.uk/",
     email: "bookings@functioncentral.co.uk",
-    testimonial: "[Your thoughts on the band go here.]",
+    testimonial:
+      "I think the music speaks for itself. Lovely chaps and incredible musicians and the night was made by them. We can't recommend them enough.",
   },
   {
     category: "Bar",
     name: "Glen — Queen's Head, Kettlesing",
     phone: "07957 217006",
     email: "info@queensheadkettlesing.co.uk",
-    testimonial: "[Your thoughts on the bar go here.]",
+    testimonial:
+      "Glen and the team at Queen's Head, Kettlesing were fantastic. The drinks were top-notch and the service was impeccable.",
   },
   {
     category: "Photobooth",
     name: "PictureBlast",
     website: "https://www.pictureblast.co.uk/",
     email: "info@pictureblastevents.co.uk",
-    testimonial: "[Your thoughts on the photobooth go here.]",
+    testimonial:
+      "All night, customisable custom frames and unlimited prints. Can't go wrong.",
   },
   {
     category: "Marquee",
     name: "Hannah Forrest-Laws — Countryside Events",
     website: "https://countryside.events/",
     email: "Hannah@countryside.events",
-    testimonial: "[Your thoughts on the marquee go here.]",
+    testimonial:
+      "A beautiful marquee set up efficiently by the team and given the rain, an absolute lifesaver. We can't recommend them enough.",
   },
   {
     category: "Glassware Hire",
     name: "Wharfeside Hire",
     website: "https://wharfesidehire.co.uk/",
     phone: "0333 567 2323",
-    testimonial: "[Your thoughts on the glassware hire go here.]",
+    testimonial: "Well priced and easy to work with.",
   },
 ];
 
