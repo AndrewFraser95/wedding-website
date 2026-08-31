@@ -8,18 +8,17 @@ import { Link, useLocation } from "react-router-dom";
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
 
+// The following are intentionally left off the top nav (their pages/routes
+// still exist at their URLs, just not linked): RSVP, Friday Night, Event
+// Details, Order of the Day, Travel and Stay, Countdown.
 const NAV_LINKS = [
   { to: "/", label: "Home" },
-  { to: "/rsvp", label: "RSVP" },
-  { to: "/friday-night", label: "Friday Night" },
   { to: "/submit", label: "Submit" },
   { to: "/our-story", label: "Our Story" },
-  { to: "/event-details", label: "Event Details" },
-  { to: "/order-of-the-day", label: "Order of the Day" },
-  { to: "/travel-stay", label: "Travel and Stay" },
-  { to: "/countdown", label: "Countdown" },
   { to: "/gallery", label: "Gallery" },
   { to: "/gift-registry", label: "Gift Registry" },
+  { to: "/lost-and-found", label: "Lost & Found" },
+  { to: "/thank-you", label: "Thank You" },
 ];
 
 export default function NavBar() {

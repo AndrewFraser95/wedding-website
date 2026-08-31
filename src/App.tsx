@@ -11,6 +11,7 @@ import GiftRegistry from "./pages/GiftRegistry";
 import OrderOfTheDay from "./pages/OrderOfTheDay";
 import SubmitContribution from "./pages/SubmitContribution";
 import FridayNight from "./pages/FridayNight";
+import LostAndFound from "./pages/LostAndFound";
 
 export default function App() {
   return (
@@ -22,6 +23,7 @@ export default function App() {
       <Route path="/our-story" element={<OurStory />} />
       <Route path="/event-details" element={<EventDetails />} />
       <Route path="/order-of-the-day" element={<OrderOfTheDay />} />
+      <Route path="/lost-and-found" element={<LostAndFound />} />
       <Route path="/travel-stay" element={<TravelAndStay />} />
       <Route path="/countdown" element={<Countdown />} />
       <Route path="/gallery" element={<Gallery />} />

@@ -54,6 +54,23 @@ service cloud.firestore {
       allow create: if true;
       allow read: if false; // Only you should read RSVPs
     }
+
+    match /contributions/{document} {
+        allow create: if true;
+    		allow read: if false; // Only you should read contributions
+    }
+
+    match /friday-night-preorders/{document} {
+  		allow create: if true;
+  		allow read: if true;
+		}
+
+    // Lost & Found: guests can post and read items. No image uploads —
+    // photos (if any) are added manually via this console.
+    match /lost-and-found/{document} {
+      allow read: if true;
+      allow create: if true;
+    }
   }
 }
 ```
