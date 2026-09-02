@@ -19,6 +19,7 @@ const NAV_LINKS = [
   { to: "/lost-and-found", label: "Lost & Found" },
   { to: "/soundtrack", label: "Soundtrack" },
   { to: "/vendors", label: "Vendors" },
+  { to: "/guestbook", label: "Guestbook" },
   { to: "/thank-you", label: "Thank You" },
 ];
 

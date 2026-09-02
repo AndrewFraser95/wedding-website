@@ -18,9 +18,11 @@ import { db } from "../lib/firebase";
 import {
   addDoc,
   collection,
+  doc,
   onSnapshot,
   orderBy,
   query,
+  updateDoc,
 } from "firebase/firestore";
 
 interface LostAndFoundItem {
@@ -53,6 +55,12 @@ export default function LostAndFound() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const formRef = useRef<HTMLDivElement | null>(null);
+  // When set, submitting the form resolves (updates) this existing lost
+  // item instead of creating a new document — avoids leaving the original
+  // "lost" card behind and stops the same item being reported found twice.
+  const [resolvingItemId, setResolvingItemId] = useState<string | null>(
+    null,
+  );
 
   useEffect(() => {
     const itemsQuery = query(
@@ -87,6 +95,7 @@ export default function LostAndFound() {
   });
 
   const handleFoundThis = (item: LostAndFoundItem) => {
+    setResolvingItemId(item.id);
     form.reset({
       status: "found",
       itemName: item.itemName,
@@ -101,23 +110,55 @@ export default function LostAndFound() {
     }, 0);
   };
 
+  const openBlankForm = () => {
+    const next = !showForm;
+    setShowForm(next);
+    if (next) {
+      // Opening the general form (not via "Found this?") always starts a
+      // brand new item, never resolves whatever was last clicked.
+      setResolvingItemId(null);
+      form.reset({
+        status: "lost",
+        itemName: "",
+        description: "",
+        reporterName: "",
+        contact: "",
+      });
+    }
+  };
+
   const onSubmit = async (values: FormValues) => {
     setIsSubmitting(true);
     try {
-      await addDoc(collection(db, "lost-and-found"), {
-        status: values.status,
-        itemName: values.itemName,
-        description: values.description || "",
-        reporterName: values.reporterName,
-        contact: values.contact || "",
-        createdAt: Date.now(),
-      });
+      if (resolvingItemId) {
+        // Mark the original lost item as found in place, rather than
+        // leaving it as "lost" and adding a separate "found" entry — that
+        // was letting the same item be reported found more than once.
+        await updateDoc(doc(db, "lost-and-found", resolvingItemId), {
+          status: "found",
+          itemName: values.itemName,
+          description: values.description || "",
+          reporterName: values.reporterName,
+          contact: values.contact || "",
+          foundAt: Date.now(),
+        });
+      } else {
+        await addDoc(collection(db, "lost-and-found"), {
+          status: values.status,
+          itemName: values.itemName,
+          description: values.description || "",
+          reporterName: values.reporterName,
+          contact: values.contact || "",
+          createdAt: Date.now(),
+        });
+      }
 
       form.reset();
+      setResolvingItemId(null);
       setShowForm(false);
       setShowModal(true);
     } catch (e) {
-      console.error("Error adding lost & found item: ", e);
+      console.error("Error saving lost & found item: ", e);
       alert("There was an error submitting your item. Please try again.");
     } finally {
       setIsSubmitting(false);
@@ -243,7 +284,7 @@ export default function LostAndFound() {
           <div className="flex justify-center mb-4">
             <Button
               type="button"
-              onClick={() => setShowForm((prev) => !prev)}
+              onClick={openBlankForm}
               className="rounded-full px-8 py-3 bg-[#e9c46a] text-[#fff8f0] font-semibold text-lg shadow-md hover:bg-[#b5835d] transition"
               style={{
                 fontFamily: "Playwrite AU QLD, cursive",
@@ -265,40 +306,47 @@ export default function LostAndFound() {
                   className="space-y-6"
                   style={{ fontFamily: "Inter, Segoe UI, Arial, sans-serif" }}
                 >
-                  <FormField
-                    control={form.control}
-                    name="status"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel className="text-[#b5835d] font-semibold">
-                          Is this item lost or found?
-                        </FormLabel>
-                        <FormControl>
-                          <div className="flex gap-4">
-                            <label className="flex items-center gap-2 text-[#7c4f2c]">
-                              <input
-                                type="radio"
-                                value="lost"
-                                checked={field.value === "lost"}
-                                onChange={() => field.onChange("lost")}
-                              />
-                              I've lost something
-                            </label>
-                            <label className="flex items-center gap-2 text-[#7c4f2c]">
-                              <input
-                                type="radio"
-                                value="found"
-                                checked={field.value === "found"}
-                                onChange={() => field.onChange("found")}
-                              />
-                              I've found something
-                            </label>
-                          </div>
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
+                  {resolvingItemId ? (
+                    <p className="text-[#b5835d] font-semibold">
+                      Reporting this item as found — it'll be marked found
+                      for everyone once you submit.
+                    </p>
+                  ) : (
+                    <FormField
+                      control={form.control}
+                      name="status"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel className="text-[#b5835d] font-semibold">
+                            Is this item lost or found?
+                          </FormLabel>
+                          <FormControl>
+                            <div className="flex gap-4">
+                              <label className="flex items-center gap-2 text-[#7c4f2c]">
+                                <input
+                                  type="radio"
+                                  value="lost"
+                                  checked={field.value === "lost"}
+                                  onChange={() => field.onChange("lost")}
+                                />
+                                I've lost something
+                              </label>
+                              <label className="flex items-center gap-2 text-[#7c4f2c]">
+                                <input
+                                  type="radio"
+                                  value="found"
+                                  checked={field.value === "found"}
+                                  onChange={() => field.onChange("found")}
+                                />
+                                I've found something
+                              </label>
+                            </div>
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                  )}
                   <FormField
                     control={form.control}
                     name="itemName"

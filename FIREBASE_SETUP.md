@@ -65,9 +65,15 @@ service cloud.firestore {
   		allow read: if true;
 		}
 
-    // Lost & Found: guests can post and read items. No image uploads -
+    // Lost & Found: guests can post and read items. No image uploads —
     // photos (if any) are added manually via this console.
     match /lost-and-found/{document} {
+      allow read: if true;
+      allow create: if true;
+    }
+
+    // Guestbook: guests can post and read messages
+    match /guestbook/{document} {
       allow read: if true;
       allow create: if true;
     }

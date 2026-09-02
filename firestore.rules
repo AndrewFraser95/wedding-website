@@ -1,0 +1,39 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Allow read access to gifts for everyone
+    match /wedding/gifts {
+      allow read: if true;
+      allow write: if true; // For now - you can add authentication later
+    }
+
+    // Allow write access to RSVP submissions for everyone
+    match /rsvp-submissions/{document} {
+      allow create: if true;
+      allow read: if false; // Only you should read RSVPs
+    }
+
+    match /contributions/{document} {
+      allow create: if true;
+      allow read: if false; // Only you should read contributions
+    }
+
+    match /friday-night-preorders/{document} {
+      allow create: if true;
+      allow read: if true;
+    }
+
+    // Lost & Found: guests can post and read items. No image uploads —
+    // photos (if any) are added manually via this console.
+    match /lost-and-found/{document} {
+      allow read: if true;
+      allow create: if true;
+    }
+
+    // Guestbook: guests can post and read messages
+    match /guestbook/{document} {
+      allow read: if true;
+      allow create: if true;
+    }
+  }
+}

@@ -14,6 +14,7 @@ import FridayNight from "./pages/FridayNight";
 import LostAndFound from "./pages/LostAndFound";
 import Soundtrack from "./pages/Soundtrack";
 import Vendors from "./pages/Vendors";
+import Guestbook from "./pages/Guestbook";
 
 export default function App() {
   return (
@@ -28,6 +29,7 @@ export default function App() {
       <Route path="/lost-and-found" element={<LostAndFound />} />
       <Route path="/soundtrack" element={<Soundtrack />} />
       <Route path="/vendors" element={<Vendors />} />
+      <Route path="/guestbook" element={<Guestbook />} />
       <Route path="/travel-stay" element={<TravelAndStay />} />
       <Route path="/countdown" element={<Countdown />} />
       <Route path="/gallery" element={<Gallery />} />
