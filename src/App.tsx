@@ -15,6 +15,7 @@ import LostAndFound from "./pages/LostAndFound";
 import Soundtrack from "./pages/Soundtrack";
 import Vendors from "./pages/Vendors";
 import Guestbook from "./pages/Guestbook";
+import Photobooth from "./pages/Photobooth";
 
 export default function App() {
   return (
@@ -30,6 +31,7 @@ export default function App() {
       <Route path="/soundtrack" element={<Soundtrack />} />
       <Route path="/vendors" element={<Vendors />} />
       <Route path="/guestbook" element={<Guestbook />} />
+      <Route path="/photobooth" element={<Photobooth />} />
       <Route path="/travel-stay" element={<TravelAndStay />} />
       <Route path="/countdown" element={<Countdown />} />
       <Route path="/gallery" element={<Gallery />} />

@@ -20,6 +20,7 @@ const NAV_LINKS = [
   { to: "/soundtrack", label: "Soundtrack" },
   { to: "/vendors", label: "Vendors" },
   { to: "/guestbook", label: "Guestbook" },
+  { to: "/photobooth", label: "Photobooth" },
   { to: "/thank-you", label: "Thank You" },
 ];
 
